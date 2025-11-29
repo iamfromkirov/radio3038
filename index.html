@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>радио</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      height: 100vh;
+      margin: 0;
+      background: #f5f5f5;
+    }
+    audio {
+      width: 90%;
+      max-width: 400px;
+    }
+    h1 {
+      margin-bottom: 20px;
+      color: #333;
+    }
+  </style>
+</head>
+<body>
+  <h1>🎧 Мое радио</h1>
+  <audio controls autoplay>
+    <!-- Замените URL на ваш аудиопоток -->
+    <source src="https://stream01.pcradio.ru/vanya_fundance-hi" type="audio/mpeg" />
+    Ваш браузер не поддерживает аудио.
+  </audio>
+</body>
+</html>
