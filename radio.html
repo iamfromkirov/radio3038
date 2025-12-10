@@ -185,7 +185,7 @@
       // Устанавливаем первую станцию по умолчанию
       let currentStation = "DFM Russian Dance";
       player.src = stations[currentStation];
-      currentStationEl.textContent = `Сейчас играет: ${currentStation}`;
+      currentStationEl.textContent = `Сейчас выбрана: ${currentStation}`;
       
       // Помечаем первую кнопку как активную
       stationButtons[0].classList.add('active');
@@ -199,7 +199,7 @@
           // Обновляем текущую станцию
           currentStation = stationName;
           player.src = stationSrc;
-          currentStationEl.textContent = `Сейчас играет: ${stationName}`;
+          currentStationEl.textContent = `Сейчас выбрана: ${stationName}`;
           
           // Сбрасываем все активные кнопки
           stationButtons.forEach(btn => btn.classList.remove('active'));
