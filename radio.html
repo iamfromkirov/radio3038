@@ -1,0 +1,231 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Радио онлайн</title>
+  <style>
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+    
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      min-height: 100vh;
+      padding: 20px;
+      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+      color: white;
+    }
+    
+    .container {
+      width: 100%;
+      max-width: 500px;
+      background: rgba(255, 255, 255, 0.1);
+      backdrop-filter: blur(10px);
+      border-radius: 20px;
+      padding: 30px;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+    }
+    
+    h1 {
+      text-align: center;
+      margin-bottom: 30px;
+      font-size: 28px;
+      text-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+    }
+    
+    .radio-icon {
+      font-size: 40px;
+      display: block;
+      text-align: center;
+      margin-bottom: 10px;
+    }
+    
+    .station-list {
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+      margin-bottom: 25px;
+    }
+    
+    .station-btn {
+      background: rgba(255, 255, 255, 0.15);
+      border: 2px solid rgba(255, 255, 255, 0.3);
+      border-radius: 12px;
+      padding: 15px 20px;
+      color: white;
+      font-size: 16px;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      text-align: left;
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+    
+    .station-btn:hover {
+      background: rgba(255, 255, 255, 0.25);
+      transform: translateY(-2px);
+    }
+    
+    .station-btn.active {
+      background: rgba(255, 255, 255, 0.3);
+      border-color: white;
+      font-weight: bold;
+    }
+    
+    .station-icon {
+      font-size: 20px;
+      min-width: 24px;
+    }
+    
+    audio {
+      width: 100%;
+      margin-top: 20px;
+      border-radius: 10px;
+      box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+    }
+    
+    .current-station {
+      text-align: center;
+      margin: 15px 0;
+      font-size: 18px;
+      font-weight: bold;
+      min-height: 27px;
+      color: #FFD700;
+      text-shadow: 0 2px 3px rgba(0, 0, 0, 0.3);
+    }
+    
+    @media (max-width: 600px) {
+      .container {
+        padding: 20px;
+      }
+      
+      h1 {
+        font-size: 24px;
+      }
+      
+      .station-btn {
+        padding: 12px 15px;
+        font-size: 14px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1>
+      <span class="radio-icon">📻</span>
+      Онлайн радио
+    </h1>
+    
+    <div class="current-station" id="currentStation">
+      Выберите станцию
+    </div>
+    
+    <div class="station-list">
+      <button class="station-btn" data-name="DFM Russian Dance" data-src="https://hls-01-dfm.hostingradio.ru/dfmrusdance/96/playlist.m3u8">
+        <span class="station-icon">💃</span>
+        DFM Russian Dance
+      </button>
+      
+      <button class="station-btn" data-name="Record Russian Mix" data-src="https://stream01.pcradio.ru/record_rusmix-hi">
+        <span class="station-icon">🎵</span>
+        Record Russian Mix
+      </button>
+      
+      <button class="station-btn" data-name="Мария" data-src="https://stream01.pcradio.ru/mariafm_kirov-hi">
+        <span class="station-icon">🌸</span>
+        Мария
+      </button>
+      
+      <button class="station-btn" data-name="Русское - ЗГ" data-src="https://stream01.pcradio.ru/russkoe_zg-hi">
+        <span class="station-icon">🇷🇺</span>
+        Русское - ЗГ
+      </button>
+      
+      <button class="station-btn" data-name="Дорожное радио" data-src="https://stream01.pcradio.ru/dorozhnoe-hi">
+        <span class="station-icon">🚗</span>
+        Дорожное радио
+      </button>
+      
+      <button class="station-btn" data-name="Радио Ваня" data-src="https://stream01.pcradio.ru/vanya_fundance-hi">
+        <span class="station-icon">🎧</span>
+        Радио Ваня
+      </button>
+    </div>
+    
+    <audio id="radioPlayer" controls autoplay>
+      Ваш браузер не поддерживает аудио элемент.
+    </audio>
+  </div>
+
+  <script>
+    document.addEventListener('DOMContentLoaded', function() {
+      const player = document.getElementById('radioPlayer');
+      const currentStationEl = document.getElementById('currentStation');
+      const stationButtons = document.querySelectorAll('.station-btn');
+      
+      // Список радиостанций
+      const stations = {
+        "DFM Russian Dance": "https://hls-01-dfm.hostingradio.ru/dfmrusdance/96/playlist.m3u8",
+        "Record Russian Mix": "https://stream01.pcradio.ru/record_rusmix-hi",
+        "Мария": "https://stream01.pcradio.ru/mariafm_kirov-hi",
+        "Русское - ЗГ": "https://stream01.pcradio.ru/russkoe_zg-hi",
+        "Дорожное радио": "https://stream01.pcradio.ru/dorozhnoe-hi",
+        "Радио Ваня": "https://stream01.pcradio.ru/vanya_fundance-hi"
+      };
+      
+      // Устанавливаем первую станцию по умолчанию
+      let currentStation = "DFM Russian Dance";
+      player.src = stations[currentStation];
+      currentStationEl.textContent = `Сейчас играет: ${currentStation}`;
+      
+      // Помечаем первую кнопку как активную
+      stationButtons[0].classList.add('active');
+      
+      // Обработчики для кнопок радиостанций
+      stationButtons.forEach(button => {
+        button.addEventListener('click', function() {
+          const stationName = this.getAttribute('data-name');
+          const stationSrc = this.getAttribute('data-src');
+          
+          // Обновляем текущую станцию
+          currentStation = stationName;
+          player.src = stationSrc;
+          currentStationEl.textContent = `Сейчас играет: ${stationName}`;
+          
+          // Сбрасываем все активные кнопки
+          stationButtons.forEach(btn => btn.classList.remove('active'));
+          
+          // Помечаем текущую кнопку как активную
+          this.classList.add('active');
+          
+          // Пытаемся воспроизвести
+          player.play().catch(error => {
+            console.log('Автовоспроизведение заблокировано:', error);
+            currentStationEl.textContent = `Нажмите Play для: ${stationName}`;
+          });
+        });
+      });
+      
+      // Обработчик ошибок воспроизведения
+      player.addEventListener('error', function() {
+        currentStationEl.textContent = 'Ошибка загрузки станции. Попробуйте другую.';
+        player.src = '';
+      });
+      
+      // Обработчик начала воспроизведения
+      player.addEventListener('play', function() {
+        currentStationEl.textContent = `Сейчас играет: ${currentStation}`;
+      });
+    });
+  </script>
+</body>
+</html>
