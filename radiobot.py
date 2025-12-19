@@ -3,7 +3,7 @@ import asyncio
 from aiogram import Bot, Dispatcher, types
 from aiogram.filters import Command
 
-BOT_TOKEN = "7978336311:AAEbdxHSd24abiMUtP7A7vMuhN-sXGVluRw"
+BOT_TOKEN = "                                                     "
 WEB_APP_URL = "https://iamfromkirov.github.io/radio3038/radio.html"  # ← ваша Web App
 
 bot = Bot(token=BOT_TOKEN)
