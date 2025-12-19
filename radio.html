@@ -21,6 +21,7 @@
       padding: 20px;
       background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
       color: white;
+      position: relative;
     }
     
     .container {
@@ -31,6 +32,7 @@
       border-radius: 20px;
       padding: 30px;
       box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+      margin-bottom: 20px;
     }
     
     h1 {
@@ -102,6 +104,41 @@
       text-shadow: 0 2px 3px rgba(0, 0, 0, 0.3);
     }
     
+    .footer {
+      text-align: center;
+      margin-top: 10px;
+      padding: 15px;
+      color: rgba(255, 255, 255, 0.8);
+      font-size: 14px;
+      width: 100%;
+      max-width: 500px;
+    }
+    
+    .footer a {
+      color: #FFD700;
+      text-decoration: none;
+      font-weight: bold;
+      transition: all 0.3s ease;
+      display: inline-flex;
+      align-items: center;
+      gap: 5px;
+      padding: 8px 15px;
+      background: rgba(255, 255, 255, 0.1);
+      border-radius: 10px;
+      border: 1px solid rgba(255, 255, 255, 0.2);
+    }
+    
+    .footer a:hover {
+      color: white;
+      background: rgba(255, 255, 255, 0.2);
+      transform: translateY(-2px);
+      box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+    }
+    
+    .footer-icon {
+      font-size: 18px;
+    }
+    
     @media (max-width: 600px) {
       .container {
         padding: 20px;
@@ -114,6 +151,15 @@
       .station-btn {
         padding: 12px 15px;
         font-size: 14px;
+      }
+      
+      .footer {
+        font-size: 13px;
+        padding: 10px;
+      }
+      
+      .footer a {
+        padding: 6px 12px;
       }
     }
   </style>
@@ -165,6 +211,13 @@
     <audio id="radioPlayer" controls autoplay>
       Ваш браузер не поддерживает аудио элемент.
     </audio>
+  </div>
+
+  <div class="footer">
+    <a href="https://t.me/t2kirov" target="_blank" rel="noopener noreferrer">
+      <span class="footer-icon">✉️</span>
+      Написать автору
+    </a>
   </div>
 
   <script>
