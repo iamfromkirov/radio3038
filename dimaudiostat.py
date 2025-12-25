@@ -15,7 +15,7 @@ from aiogram.utils.keyboard import InlineKeyboardBuilder, ReplyKeyboardBuilder
 from bs4 import BeautifulSoup
 import urllib.parse
 
-BOT_TOKEN = "8247834027:AAFainpelNW8GBT0W9OKRGOYtuquyVcTkNI"
+BOT_TOKEN = "000"
 WEB_APP_URL = "https://iamfromkirov.github.io/radio3038/radio.html"
 LOG_FILE = "users.csv"
 
