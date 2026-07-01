@@ -1,0 +1,35 @@
+{
+  "version": "1.0",
+  "stations": {
+    "DFM Russian Dance": [
+      "https://hls-01-dfm.hostingradio.ru/dfmrusdance/playlist.m3u8",
+      "https://hls-02-dfm.hostingradio.ru/dfmrusdance/playlist.m3u8",
+      "https://hls-03-dfm.hostingradio.ru/dfmrusdance/playlist.m3u8",
+      "https://hls-04-dfm.hostingradio.ru/dfmrusdance/playlist.m3u8",
+      "https://stream02.pcradio.ru/dfm-hi"
+    ],
+    "Record Russian Mix": [
+      "https://stream01.pcradio.ru/record_rusmix-hi",
+      "https://stream02.pcradio.ru/record_rusmix-hi",
+      "https://stream03.pcradio.ru/record_rusmix-hi",
+      "https://stream04.pcradio.ru/record_rusmix-hi"
+    ],
+    "Русский рок": [
+      "https://stream01.pcradio.ru/russkiy_rock-hi",
+      "https://stream02.pcradio.ru/russkiy_rock-hi",
+      "https://stream03.pcradio.ru/russkiy_rock-hi",
+      "https://stream04.pcradio.ru/russkiy_rock-hi",
+      "https://stream05.pcradio.ru/russkiy_rock-hi",
+      "https://stream06.pcradio.ru/russkiy_rock-hi"
+    ],
+    "Русское - ЗГ": [
+      "https://stream01.pcradio.ru/russkoe_zg-hi"
+    ],
+    "Дорожное радио": [
+      "https://stream01.pcradio.ru/dorozhnoe-hi"
+    ],
+    "Радио Ваня": [
+      "https://stream01.pcradio.ru/vanya_fundance-hi"
+    ]
+  }
+}
